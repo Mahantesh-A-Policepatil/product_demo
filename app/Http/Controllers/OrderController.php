@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use Auth;
 use Illuminate\Notifications\Notification;
 use App\Notifications\OrderNotifications\OrderPlaced;
+use App\Notifications\OrderNotifications\OrderUpdated;
+use App\Notifications\OrderNotifications\OrderCancelled;
 
 class OrderController extends Controller
 {
@@ -73,13 +75,8 @@ class OrderController extends Controller
          $order->save();
          
          $customer = User::where('id',$order->ordered_by)->first(); 
-
-         //echo "<pre>";
-         // dump($order); 
-
-         // \Notification::send($customer, new OrderPlaced($order));
-          $customer->notify(new OrderPlaced($order));
-         //\Notification::send($customer, new InvoicePaid($order));
+         $customer->notify(new OrderPlaced($order));
+        
          return redirect('/orders')->with('success', 'Order Placed Successfully!');
     }
 
@@ -132,6 +129,10 @@ class OrderController extends Controller
         $order->ordered_by = Auth::id();
            
         $order->update();
+
+        $customer = User::where('id',$order->ordered_by)->first(); 
+        $customer->notify(new OrderUpdated($order));
+
         return redirect('/orders')->with('success', 'Order Updated Successfully!');
     }
 
@@ -146,6 +147,9 @@ class OrderController extends Controller
         //
         $order = Orders::find($id);
         $order->delete();
+
+        $customer = User::where('id',$order->ordered_by)->first(); 
+        $customer->notify(new OrderCancelled($order));
 
         return redirect('/orders')->with('success', 'Your Order has been Cancelled Successfully!');
     }

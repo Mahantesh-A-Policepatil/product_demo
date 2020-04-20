@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\Orders;
 
-class OrderPlaced extends Notification
+class OrderUpdated extends Notification
 {
     use Queueable;
 
@@ -18,7 +18,6 @@ class OrderPlaced extends Notification
      * @return void
      */
     public $order;
-    
 
     public function __construct(Orders $order)
     {
@@ -45,11 +44,11 @@ class OrderPlaced extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('mail.order_placed_notification_to_customer', [
+        return (new MailMessage)->markdown('mail.order_placed_notification_updated_to_customer', [
             'user' => $notifiable,
             'customer' => $this->order->user,
             'order' => $this->order,
-        ])->subject('Order Placed - (Name: '.$this->order->user->name.') - (Order Date: '.$this->order->order_date.')');     
+        ])->subject('Order Updated - (Name: '.$this->order->user->name.') - (Order Date: '.$this->order->order_date.')');     
     }
 
     /**
