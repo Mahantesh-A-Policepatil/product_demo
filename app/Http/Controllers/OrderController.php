@@ -9,6 +9,8 @@ use App\Models\Categories;
 use App\Models\Products;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Notifications\Notification;
+use App\Notifications\OrderNotifications\OrderPlaced;
 
 class OrderController extends Controller
 {
@@ -67,7 +69,17 @@ class OrderController extends Controller
             'ordered_by' => Auth::id(),
             'order_date' => Carbon::parse(now()),
          ]);
+         
          $order->save();
+         
+         $customer = User::where('id',$order->ordered_by)->first(); 
+
+         //echo "<pre>";
+         // dump($order); 
+
+         // \Notification::send($customer, new OrderPlaced($order));
+          $customer->notify(new OrderPlaced($order));
+         //\Notification::send($customer, new InvoicePaid($order));
          return redirect('/orders')->with('success', 'Order Placed Successfully!');
     }
 
