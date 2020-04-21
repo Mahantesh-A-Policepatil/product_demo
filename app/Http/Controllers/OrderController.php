@@ -50,7 +50,7 @@ class OrderController extends Controller
                     "product_name" => isset($item->product->name) ? $item->product->name : "",
                     "product_image" => isset($item->product->image_path) ? $item->product->image_path : "",
                     "product_price" => isset($item->product->price) ? $item->product->price : "",
-                    "order_date" => isset($item->order_date) ? Carbon::parse($item->order_date)->format("Y-m-d") : "",
+                    "order_date" => isset($item->order_date) ? Carbon::parse($item->order_date)->format("d-M-Y") : "",
                     "ordered_by" => isset($item->user->name) ? ucfirst($item->user->name) : "",
                 ];
             });                       
