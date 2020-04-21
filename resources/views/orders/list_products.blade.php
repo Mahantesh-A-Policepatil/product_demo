@@ -23,6 +23,7 @@
                <th>Product Price</th>
                <th>Order Date</th>
                <th>Ordered By</th>
+               <th >Actions</th>
             </tr>
          </thead>
       </table>
@@ -46,10 +47,29 @@
                     },
                     { data: 'product_price', name: 'product_price' },
                     { data: 'order_date', name: 'order_date' },
-                    { data: 'ordered_by', name: 'ordered_by' }
+                    { data: 'ordered_by', name: 'ordered_by' },
+                    { data: 'id', name: 'id',
+                        render: function( data, type, full, meta ) {
+                          var getEditUrl = "http://"+window.location.host+"/orders/"+data+"/edit";
+                          $action_buttons =  "<div><div style='float:left;'><a href='"+getEditUrl+"' class='btn btn-success '>Edit</a></div>";
+                          
+                          /*
+                          * TBD : Following route should be called with POST Request to delete an order.
+                          */
+                          // http://localhost:8000/orders/201
+                          var getDeleteUrl = "http://"+window.location.host+"/orders/"+data+"/edit";
+                          $action_buttons += "<div style='float:left;margin-left:5px;'><a href='"+getDeleteUrl+"' class='btn btn-danger '>Delete</a></div></div>";
+                          return $action_buttons;
+                        }
+                    }
                  ]
         });
      });
+     $(document).on('click', '.edit-order', function (e) {
+        var elem = $(this);
+        console.log("Edit Clicked"+elem.order_id);
+        
+     });   
    </script>
  </body>
 </html>
