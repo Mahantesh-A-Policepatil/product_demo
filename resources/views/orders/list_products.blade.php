@@ -19,6 +19,7 @@
                <th>Id</th>
                <th>Category</th>
                <th>Product Name</th>
+               <th>Product Image</th>
                <th>Product Price</th>
                <th>Order Date</th>
                <th>Ordered By</th>
@@ -37,7 +38,12 @@
                     { data: 'id', name: 'id' },
                     { data: 'category_name', name: 'category_name' },
                     { data: 'product_name', name: 'product_name' },
-                 // { data: 'product_image', name: 'product_image' },
+                    { data: 'product_image', name: 'product_image',
+                        render: function( data, type, full, meta ) {
+                          var getUrl = "http://"+window.location.host+"/image/"+data;
+                          return "<img src='"+getUrl+"'  height=\"50\"/>";
+                        }
+                    },
                     { data: 'product_price', name: 'product_price' },
                     { data: 'order_date', name: 'order_date' },
                     { data: 'ordered_by', name: 'ordered_by' }
