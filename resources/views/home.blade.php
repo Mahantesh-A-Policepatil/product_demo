@@ -30,6 +30,10 @@
                         <li>
                             <a href="{{ route('orders.index') }}" >Orders</a> 
                         </li>
+                        
+                         <li>
+                            <a href="{{ route('show_data') }}" >Orders with Datatable</a> 
+                        </li>
                     </ul>    
                 </div>
             </div>

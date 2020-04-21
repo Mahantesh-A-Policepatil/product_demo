@@ -27,6 +27,9 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::Resource('users', 'UserController')->middleware('admin');
 	Route::Resource('cart', 'CartController');
 	Route::Resource('orders', 'OrderController');
+	Route::get('index_new', 'OrderController@index_new');
+	//show_data
+	Route::get('show_data', 'OrderController@show_data')->name('show_data');
 });
 
 Route::get('getProductPrice', 'ProductController@getProductPrice');

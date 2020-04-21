@@ -74,6 +74,7 @@ class Orders extends Model
         return $this->belongsTo(Products::class,'product_id','id');
     }
 }
+
 ?>
 
 -----------------------------------------------------------------------
@@ -106,6 +107,7 @@ php artisan make:factory OrdersFactory --model=App/Models/Orders
 ------------------------------------------------------------------------
 Add the following code into OrdersFactory.php
 ------------------------------------------------------------------------
+
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
@@ -123,6 +125,8 @@ $factory->define(Orders::class, function (Faker $faker) {
         'created_at' => now(),
     ];
 });
+?>
+
 ------------------------------------------------------------------------
 Execute the following command to create 150 records in orders table.
 ------------------------------------------------------------------------

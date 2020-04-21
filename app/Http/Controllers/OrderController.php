@@ -13,6 +13,8 @@ use Illuminate\Notifications\Notification;
 use App\Notifications\OrderNotifications\OrderPlaced;
 use App\Notifications\OrderNotifications\OrderUpdated;
 use App\Notifications\OrderNotifications\OrderCancelled;
+use Datatables;
+use DB;
 
 class OrderController extends Controller
 {
@@ -36,6 +38,33 @@ class OrderController extends Controller
         }
         
     }
+
+    public function index_new()
+    {
+        $orders = Orders::get();
+
+        $results = $orders->map(function ($item, $key) {
+                return [
+                    "id" => $item->id,
+                    "category_name" => isset($item->category->name) ? $item->category->name : "",
+                    "product_name" => isset($item->product->name) ? $item->product->name : "",
+                    "product_image" => isset($item->product->image_path) ? $item->product->image_path : "",
+                    "product_price" => isset($item->product->price) ? $item->product->price : "",
+                    "order_date" => isset($item->order_date) ? Carbon::parse($item->order_date)->format("Y-m-d") : "",
+                    "ordered_by" => isset($item->user->name) ? ucfirst($item->user->name) : "",
+                ];
+            });                       
+                       
+        return Datatables::of($results)
+                          
+                          ->make(true);
+    }
+    public function show_data()
+    {
+        return view('orders.list_products');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
