@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('index_new', 'OrderController@index_new');
 	//show_data
 	Route::get('show_data', 'OrderController@show_data')->name('show_data');
+	Route::post('deleteOrder', 'OrderController@delete')->name('deleteOrder');
 });
 
 Route::get('getProductPrice', 'ProductController@getProductPrice');

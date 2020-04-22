@@ -55,9 +55,7 @@ class OrderController extends Controller
                 ];
             });                       
                        
-        return Datatables::of($results)
-                          
-                          ->make(true);
+        return Datatables::of($results)->setRowId('id')->make(true);
     }
     public function show_data()
     {
@@ -181,5 +179,22 @@ class OrderController extends Controller
         $customer->notify(new OrderCancelled($order));
 
         return redirect('/orders')->with('success', 'Your Order has been Cancelled Successfully!');
+
+    }
+
+    public function delete(Request $request)
+    {
+        //
+        $id = $request->order_id;
+        $order = Orders::find($id);
+        $order->delete();
+
+        $customer = User::where('id',$order->ordered_by)->first(); 
+        $customer->notify(new OrderCancelled($order));
+
+        //return redirect('/orders')->with('success', 'Your Order has been Cancelled Successfully!');
+
+        echo 'Your Order has been Cancelled Successfully!';
+        
     }
 }

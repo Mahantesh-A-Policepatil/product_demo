@@ -13,7 +13,14 @@
     
      <div alin="left">  <a href="{{ route('home')}}" class="btn btn-primary">Home</a> </div>
       <h2>Orders</h2>
-      <table class="table table-bordered" id="table">
+      <div class="col-sm-12">
+        @if(session()->get('success'))
+          <div class="alert alert-success">
+            {{ session()->get('success') }}  
+          </div>
+        @endif
+      </div>
+      <table class="table table-bordered" id="yajra_table">
          <thead>
             <tr>
                <th>Id</th>
@@ -31,18 +38,19 @@
   
    <script>
      $(function() {
-           $('#table').DataTable({
+           $('#yajra_table').DataTable({
            processing: true,
            serverSide: true,
            ajax: '{{ url('index_new') }}',
            columns: [
+
                     { data: 'id', name: 'id' },
                     { data: 'category_name', name: 'category_name' },
                     { data: 'product_name', name: 'product_name' },
                     { data: 'product_image', name: 'product_image',
                         render: function( data, type, full, meta ) {
                           var getUrl = "http://"+window.location.host+"/image/"+data;
-                          return "<img src='"+getUrl+"'  height=\"50\"/>";
+                          return "<img src='"+getUrl+"'  height=\"70\" width=\"70\" />";
                         }
                     },
                     { data: 'product_price', name: 'product_price' },
@@ -52,24 +60,36 @@
                         render: function( data, type, full, meta ) {
                           var getEditUrl = "http://"+window.location.host+"/orders/"+data+"/edit";
                           $action_buttons =  "<div><div style='float:left;'><a href='"+getEditUrl+"' class='btn btn-success '>Edit</a></div>";
+
                           
-                          /*
-                          * TBD : Following route should be called with POST Request to delete an order.
-                          */
-                          // http://localhost:8000/orders/201
-                          var getDeleteUrl = "http://"+window.location.host+"/orders/"+data+"/edit";
-                          $action_buttons += "<div style='float:left;margin-left:5px;'><a href='"+getDeleteUrl+"' class='btn btn-danger '>Delete</a></div></div>";
+                          $action_buttons += "<div style='float:left;margin-left:5px;'><button class='btn btn-danger delete-order' data-order-id='"+data+"'>Delete</button></div></div>";
+                          
                           return $action_buttons;
                         }
                     }
                  ]
         });
      });
-     $(document).on('click', '.edit-order', function (e) {
-        var elem = $(this);
-        console.log("Edit Clicked"+elem.order_id);
         
-     });   
+     
+     $(document).on('click', '.delete-order', function (e) {
+        var order_id = $(this).data('order-id');
+        $.ajax({
+               url:"{{ route('deleteOrder')}}",
+               type:"post",
+               data:{'order_id':order_id, "_token": "{{ csrf_token() }}"},
+               success: function(response)
+               {
+                    if ( $.fn.dataTable.isDataTable( '#yajra_table' ) ) {
+                        table = $('#yajra_table').DataTable();
+                        table.ajax.reload( null, false ); // user paging is not reset on reload
+                    }
+               }
+           });
+        
+     }); 
+     
+
    </script>
  </body>
 </html>
