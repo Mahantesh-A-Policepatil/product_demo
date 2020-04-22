@@ -1,17 +1,18 @@
-
+@extends('layouts.app')
+@section('content')
 <html lang="en">
 <head>
     <title>Orders</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  
-    <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">   -->
+    <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" defer></script>
 </head>
 <body>
    <div class="container" style="margin-top:40px;">
     
-     <div alin="left">  <a href="{{ route('home')}}" class="btn btn-primary">Home</a> </div>
+    
       <h2>Orders</h2>
       <div class="col-sm-12">
         @if(session()->get('success'))
@@ -93,3 +94,4 @@
    </script>
  </body>
 </html>
+@endsection
