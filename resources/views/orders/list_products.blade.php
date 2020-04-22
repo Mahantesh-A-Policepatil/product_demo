@@ -5,6 +5,7 @@
     <title>Orders</title>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">   -->
     <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" defer></script>
@@ -55,7 +56,12 @@
                           return "<img src='"+getUrl+"'  height=\"70\" width=\"70\" />";
                         }
                     },
-                    { data: 'product_price', name: 'product_price' },
+                    { data: 'product_price', name: 'product_price' ,
+                        render: function( data, type, full, meta ) {
+                          var Rs = "<i style='font-size:14px' class='fa'>&#xf156;</i>";
+                          return Rs+" "+data;
+                        }
+                    },
                     { data: 'order_date', name: 'order_date' },
                     { data: 'ordered_by', name: 'ordered_by' },
                     { data: 'id', name: 'id', orderable: false,

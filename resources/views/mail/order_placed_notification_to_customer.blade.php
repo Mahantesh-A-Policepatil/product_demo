@@ -1,5 +1,5 @@
 @component('mail::message')
-##Hi {{ $customer->name }},
+##Hi {{ ucfirst($customer->name) }},
 
 Greetings of the day.
 
@@ -12,8 +12,8 @@ Following are your order details
 - Product Category : {{ $order->category->name }}
 - Product Price : {{ $order->product->price }}
 
-
 Customer contact details:
-- Name: {{ $customer->name }}
+
+- Name: {{ ucfirst($customer->name) }}
 - Email: {{ $customer->email }}
 @endcomponent

@@ -112,7 +112,7 @@ class OrderController extends Controller
          $customer = User::where('id',$order->ordered_by)->first(); 
          $customer->notify(new OrderPlaced($order));
         
-         return redirect('/orders')->with('success', 'Order Placed Successfully!');
+         return redirect('/show_data')->with('success', 'Order Placed Successfully!');
     }
 
     /**
@@ -168,7 +168,7 @@ class OrderController extends Controller
         $customer = User::where('id',$order->ordered_by)->first(); 
         $customer->notify(new OrderUpdated($order));
 
-        return redirect('/orders')->with('success', 'Order Updated Successfully!');
+        return redirect('/show_data')->with('success', 'Order Updated Successfully!');
     }
 
     /**
