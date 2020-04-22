@@ -52,16 +52,16 @@ class OrderController extends Controller
         }
 
         $results = $order_items->map(function ($item, $key) {
-                return [
-                    "id" => $item->id,
-                    "category_name" => isset($item->category->name) ? $item->category->name : "",
-                    "product_name" => isset($item->product->name) ? $item->product->name : "",
-                    "product_image" => isset($item->product->image_path) ? $item->product->image_path : "",
-                    "product_price" => isset($item->product->price) ? $item->product->price : "",
-                    "order_date" => isset($item->order_date) ? Carbon::parse($item->order_date)->format("d-M-Y") : "",
-                    "ordered_by" => isset($item->user->name) ? ucfirst($item->user->name) : "",
-                ];
-            });                       
+            return [
+                "id" => $item->id,
+                "category_name" => isset($item->category->name) ? $item->category->name : "",
+                "product_name" => isset($item->product->name) ? $item->product->name : "",
+                "product_image" => isset($item->product->image_path) ? $item->product->image_path : "",
+                "product_price" => isset($item->product->price) ? $item->product->price : "",
+                "order_date" => isset($item->order_date) ? Carbon::parse($item->order_date)->format("d-M-Y") : "",
+                "ordered_by" => isset($item->user->name) ? ucfirst($item->user->name) : "",
+            ];
+        });                       
                        
         return Datatables::of($results)->setRowId('id')->make(true);
     }
