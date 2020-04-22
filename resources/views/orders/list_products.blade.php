@@ -58,7 +58,7 @@
                     { data: 'product_price', name: 'product_price' },
                     { data: 'order_date', name: 'order_date' },
                     { data: 'ordered_by', name: 'ordered_by' },
-                    { data: 'id', name: 'id',
+                    { data: 'id', name: 'id', orderable: false,
                         render: function( data, type, full, meta ) {
                           var getEditUrl = "http://"+window.location.host+"/orders/"+data+"/edit";
                           $action_buttons =  "<div><div style='float:left;'><a href='"+getEditUrl+"' class='btn btn-success '>Edit</a></div>";
