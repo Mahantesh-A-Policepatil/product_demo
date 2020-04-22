@@ -10,9 +10,7 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" defer></script>
 </head>
 <body>
-   <div class="container" style="margin-top:40px;">
-    
-    
+   <div class="container" style="margin-top:20px;">
       <h2>Orders</h2>
       <div class="col-sm-12">
         @if(session()->get('success'))
@@ -21,6 +19,8 @@
           </div>
         @endif
       </div>
+      <div alin="right" style="margin-top:5px;">  <a href="{{ route('orders.create')}}" class="btn btn-primary">Place A New Order</a> </div>
+      <div style="margin-top:10px;">
       <table class="table table-bordered" id="yajra_table">
          <thead>
             <tr>
@@ -35,6 +35,7 @@
             </tr>
          </thead>
       </table>
+    </div>
    </div>
   
    <script>

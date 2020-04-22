@@ -25,13 +25,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        // if Non-Admin then show only those records that are created by currently logged-in user
         if(\Auth::user()->is_permission == 0)
         {
             $order_items = Orders::where('ordered_by',Auth::id())->latest()->paginate(5);
             return view('orders.index', compact('order_items'));
         }
-        else
+        else // If Admin then show all records
         {
             $order_items = Orders::latest()->paginate(5);
             return view('orders.index', compact('order_items'));
@@ -41,9 +41,17 @@ class OrderController extends Controller
 
     public function index_new()
     {
-        $orders = Orders::get();
+        // if Non-Admin then show only those records that are created by currently logged-in user
+        if(\Auth::user()->is_permission == 0)
+        {
+            $order_items = Orders::where('ordered_by',Auth::id())->latest()->get();
+        }
+        else // If Admin then show all records
+        {
+            $order_items = Orders::latest()->get();
+        }
 
-        $results = $orders->map(function ($item, $key) {
+        $results = $order_items->map(function ($item, $key) {
                 return [
                     "id" => $item->id,
                     "category_name" => isset($item->category->name) ? $item->category->name : "",
