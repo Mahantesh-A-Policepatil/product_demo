@@ -24,8 +24,30 @@ class Orders extends Model
         'ordered_by',
         'created_at',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'deleted_at',
     ];
+
+    protected $dates = [
+        'deleted_at',
+        'created_at',
+        'updated_at',
+    ];  
+
+    public function getCreatedAtAttribute()
+    {
+        return  isset($this->attributes['created_at']) ? Carbon::parse($this->attributes['created_at'])->format('Y-m-d g:i A') : null;
+    }
+
+    public function getUpdatedAtAttribute()
+    {
+        return  isset($this->attributes['updated_at']) ? Carbon::parse($this->attributes['updated_at'])->format('Y-m-d g:i A') : null;
+    }
+
+    public function getDeletedAtAttribute()
+    {
+        return  isset($this->attributes['deleted_at']) ? Carbon::parse($this->attributes['deleted_at'])->format('Y-m-d g:i A') : null;
+    }
 
     public function user()
     {

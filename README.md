@@ -87,13 +87,23 @@ php artisan make:model Models\Categories
 php artisan make:model Models\Orders
 php artisan make:model Models\Cart
 ------------------------------------------------------------------------
-Commands Used to Create Controllers
+Commands Used to Create Controllers (WEB)
 ------------------------------------------------------------------------
 php artisan make:controller UserController --resource
 php artisan make:controller CategoryController --resource
 php artisan make:controller ProductController --resource
 php artisan make:controller OrderController --resource
 php artisan make:controller CartController --resource
+------------------------------------------------------------------------
+Commands Used to Create Controllers (API)
+------------------------------------------------------------------------
+php artisan make:controller API\UserController --resource
+php artisan make:controller API\CategoryController --resource
+php artisan make:controller API\ProductController --resource
+php artisan make:controller API\OrderController --resource
+php artisan make:controller API\CartController --resource
+
+php artisan make:request RegisterAuthRequest
 ------------------------------------------------------------------------
 Commands to create Notifications
 ------------------------------------------------------------------------

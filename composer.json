@@ -17,6 +17,7 @@
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
         "nesbot/carbon": "^2.32",
+        "tymon/jwt-auth": "^1.0",
         "yajra/laravel-datatables-oracle": "^9.9"
     },
     "require-dev": {

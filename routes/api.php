@@ -14,6 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', 'API\ApiController@login');
+Route::post('register', 'API\ApiController@register');
+ 
+Route::group(['middleware' => 'auth.jwt'], function () {
+    Route::get('logout', 'API\ApiController@logout');
+ 
+    Route::get('user', 'API\ApiController@getAuthUser');
+
+    Route::Resource('users', 'UserController')->middleware('admin');
+    Route::Resource('categories', 'API\CategoryController')->middleware('admin');
+ 	Route::Resource('products', 'API\ProductController')->middleware('admin');
+
+ 	Route::Resource('cart', 'API\CartController');
+	Route::Resource('orders', 'API\OrderController');
+
+
+    /*
+
+    Route::get('products', 'API\ProductController@index');
+    Route::get('products/{id}', 'API\ProductController@show');
+    Route::post('products', 'API\ProductController@store');
+    Route::put('products/{id}', 'API\ProductController@update');
+    Route::delete('products/{id}', 'API\ProductController@destroy');
+    
+    */
 });

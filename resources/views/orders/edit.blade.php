@@ -77,6 +77,8 @@
            {
               // console.log(response);
               $("#product_id").empty();
+              $(".product_image_div").html('');
+              $("#price").val('');
               for (var i=0; i<response.length; i++) 
               {
                 $("#product_id").append("<option value='"+response[i].id+"'>"+response[i].name+"</option>");

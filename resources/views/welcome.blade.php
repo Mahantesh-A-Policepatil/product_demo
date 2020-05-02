@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    CEX WEBUY - INTERVIEW TASK
+                    INTERVIEW TASK
                 </div>
 
             </div>
