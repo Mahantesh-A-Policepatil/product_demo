@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -43,10 +44,20 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-         $request->validate([
+       
+        $validator = Validator::make($request->all(), [
             'name'=>'required',
             'descryption'=>'required',
-         ]);
+        ]);
+
+        if($validator->fails()){
+           
+            return response()->json([
+                "message" => "The given data was invalid.",
+                "errors" => $validator->errors()
+            ], 422);
+  
+        }
 
          $category = new Categories([
             'name' => $request->get('name'),
@@ -102,10 +113,19 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name'=>'required',
             'descryption'=>'required',
-         ]);
+        ]);
+
+        if($validator->fails()){
+           
+            return response()->json([
+                "message" => "The given data was invalid.",
+                "errors" => $validator->errors()
+            ], 422);
+  
+        }
 
          $category = Categories::find($id);
 

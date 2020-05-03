@@ -10,6 +10,7 @@ use App\Models\Categories;
 use App\Models\Products;
 use Carbon\Carbon;
 use Auth;
+use Validator;
 
 class CartController extends Controller
 {
@@ -98,10 +99,20 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+       
+        $validator = Validator::make($request->all(), [
             'category_id'=>'required',
             'product_id'=>'required',
         ]);
+
+        if($validator->fails()){
+           
+            return response()->json([
+                "message" => "The given data was invalid.",
+                "errors" => $validator->errors()
+            ], 422);
+  
+        }
 
          
         $cart = new Cart([
@@ -176,10 +187,19 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'category_id'=>'required',
             'product_id'=>'required',
         ]);
+
+        if($validator->fails()){
+           
+            return response()->json([
+                "message" => "The given data was invalid.",
+                "errors" => $validator->errors()
+            ], 422);
+  
+        }
 
         $cart = Cart::find($id);
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
+use Validator;
 
 
 
@@ -64,13 +65,23 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
+       
+        $validator = Validator::make($request->all(), [
             'name'=>'required',
             'category_id'=>'required',
             'image'=>'required',
             'price'=>'required|numeric',
             'descryption'=>'required',
         ]);
+
+        if($validator->fails()){
+           
+            return response()->json([
+                "message" => "The given data was invalid.",
+                "errors" => $validator->errors()
+            ], 422);
+  
+        }
 
 
         if($files=$request->file('image'))
@@ -150,13 +161,22 @@ class ProductController extends Controller
     {
         //
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name'=>'required',
             'category_id'=>'required',
             'image'=>'required',
             'price'=>'required|numeric',
             'descryption'=>'required',
         ]);
+
+        if($validator->fails()){
+           
+            return response()->json([
+                "message" => "The given data was invalid.",
+                "errors" => $validator->errors()
+            ], 422);
+  
+        }
        
         $product = Products::find($id);
 
