@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Product List</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -83,6 +83,7 @@
         </style>
     </head>
     <body>
+        <h1 style="padding-left:42px;">Product List</h1>
         <div class="flex-center">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -99,7 +100,7 @@
             @endif
         </div>
         <br>
-        <br>
+        
         <div class="container" style="padding-left:42px;">
             <div class="row">
                  <div class="form-group">
