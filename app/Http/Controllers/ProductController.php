@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
+use Response;
 
 class ProductController extends Controller
 {
@@ -43,6 +44,23 @@ class ProductController extends Controller
         $category_id = $request->category_id;
         $product = Products::where('category_id',$category_id)->get();
         return $product;
+    }
+
+    public function getProductsView(Request $request)
+    {
+        $category_id = $request->category_id;
+        $product = Products::where('category_id',$category_id)->get();
+
+        $html=view('productGrid',compact('product'))->render();
+
+        if (count($product)>0) 
+        {
+            return response::json(['status'=>'success','data'=>$html]);
+        } 
+        else 
+        {
+            return response::json(['status'=>'fail','Nothing Found!!']);
+        }
     }
 
     /**

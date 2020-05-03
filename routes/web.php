@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/productList', 'GuestUserController@productListView')->name('productList');
+
 Route::group(['middleware' => ['auth']], function() {
 	Route::Resource('categories', 'CategoryController')->middleware('admin');
 	Route::Resource('products', 'ProductController')->middleware('admin');
@@ -35,6 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('getProductPrice', 'ProductController@getProductPrice');
 Route::get('getProductsByCategory', 'ProductController@getProductsByCategory');
+Route::get('getProductsView', 'ProductController@getProductsView');
 
 
 

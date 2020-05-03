@@ -235,4 +235,27 @@ class ProductController extends Controller
             'message' => 'Products Deleted Successfully!'
         ], 200);
     }
+
+    public function getProductsByCategory(Request $request,$category_id)
+    {
+        $currentURL = $request->ip();
+        $products = Products::where('category_id',$category_id)->get();
+        // return $product;
+
+        $results = $products->map(function ($item, $key) use($currentURL){
+            return [
+                "product_id" => $item->id,
+                "product_name" => isset($item->name) ? $item->name : "",
+                "product_descryption" => isset($item->descryption) ? $item->descryption : "",
+                "product_category" => isset($item->category->name) ? $item->category->name : "",
+                "product_price" => isset($item->price) ? $item->price : "",
+                "product_image_path" => isset($item->image_path) ? $currentURL."/image/".$item->image_path : "",
+            ];
+        });  
+
+        return response()->json([
+            'status' => "success",
+            'data' => $results
+        ], 200);
+    }
 }

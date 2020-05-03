@@ -2,7 +2,7 @@
 @section('content')
 <html lang="en">
 <head>
-    <title>Orders</title>
+    <title>Wish List</title>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">   -->
     <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,7 +12,7 @@
 </head>
 <body>
    <div class="container" style="margin-top:20px;">
-      <h2>Orders</h2>
+      <h2>Wish List</h2>
       <div class="col-sm-12">
         @if(session()->get('success'))
           <div class="alert alert-success">

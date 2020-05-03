@@ -29,14 +29,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
  	Route::Resource('cart', 'API\CartController');
 	Route::Resource('orders', 'API\OrderController');
 
-
-    /*
-
-    Route::get('products', 'API\ProductController@index');
-    Route::get('products/{id}', 'API\ProductController@show');
-    Route::post('products', 'API\ProductController@store');
-    Route::put('products/{id}', 'API\ProductController@update');
-    Route::delete('products/{id}', 'API\ProductController@destroy');
-    
-    */
 });
+
+Route::get('getProductsByCategory/{category_id}', 'API\ProductController@getProductsByCategory');

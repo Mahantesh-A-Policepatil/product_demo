@@ -94,6 +94,8 @@ php artisan make:controller CategoryController --resource
 php artisan make:controller ProductController --resource
 php artisan make:controller OrderController --resource
 php artisan make:controller CartController --resource
+
+php artisan make:controller GuestUserController
 ------------------------------------------------------------------------
 Commands Used to Create Controllers (API)
 ------------------------------------------------------------------------
