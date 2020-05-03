@@ -64,7 +64,7 @@
             .row-item {
                 border: 1px solid grey; 
                 height: 250px; 
-                width: 15%; 
+                width: 20%; 
                 float:left; 
                 margin-left: 15px; 
                 box-shadow: 2px 2px #888888;
@@ -76,8 +76,16 @@
             }
 
             .text-container {
-                margin-left: 15px;
+                color: white;
+                margin-top: 6.5px;
+                font-weight: bold;
                 text-align: left;
+                /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); */
+                background-color:black;
+
+            }
+            .text-section{
+                background-color:#92a8d1;;
             }
 
         </style>
