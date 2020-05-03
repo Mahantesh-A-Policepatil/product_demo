@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         //
         $categories = Categories::all();
-        //return view('categories.index', compact('categories'));
+        
         return response()->json([
             'status' => "success",
             'data' => $categories

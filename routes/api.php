@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
  
     Route::get('user', 'API\ApiController@getAuthUser');
 
-    Route::Resource('users', 'UserController')->middleware('admin');
+    Route::Resource('users', 'API\UserController')->middleware('admin');
     Route::Resource('categories', 'API\CategoryController')->middleware('admin');
  	Route::Resource('products', 'API\ProductController')->middleware('admin');
 

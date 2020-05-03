@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -15,29 +16,15 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users = User::get();
+
+        return response()->json([
+            'status' => "success",
+            'data' => $users
+        ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
+    
     /**
      * Display the specified resource.
      *
@@ -47,17 +34,16 @@ class UserController extends Controller
     public function show($id)
     {
         //
-    }
+        $user = User::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        if (!$user) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Sorry, user with id ' . $id . ' can not be found'
+            ], 400);
+        }
+
+        return $user;
     }
 
     /**
@@ -70,6 +56,31 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'is_permission'=>'required',
+        ]);
+
+        $user = User::find($id);
+        
+        if (!$user || empty($user)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, user with id ' . $id . ' cannot be found'
+            ], 400);
+        }
+         
+        $user->name =  $request->get('name');
+        $user->email = $request->get('email');
+        $user->is_permission = $request->get('is_permission');
+           
+        $user->update();
+        
+        return response()->json([
+            'status' => "success",
+            'message' => 'User Updated Successfully!'
+         ], 200);
     }
 
     /**
@@ -81,5 +92,20 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, user with id ' . $id . ' cannot be found'
+            ], 400);
+        }
+
+        $user->delete();
+
+        return response()->json([
+            'status' => "success",
+            'message' => 'User has been Deleted Successfully!'
+         ], 200);
     }
 }

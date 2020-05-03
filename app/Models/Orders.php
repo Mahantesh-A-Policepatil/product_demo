@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Categories;
 use App\Models\Products;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -47,6 +48,11 @@ class Orders extends Model
     public function getDeletedAtAttribute()
     {
         return  isset($this->attributes['deleted_at']) ? Carbon::parse($this->attributes['deleted_at'])->format('Y-m-d g:i A') : null;
+    }
+
+    public function getOrderDateAttribute()
+    {
+        return  isset($this->attributes['order_date']) ? Carbon::parse($this->attributes['order_date'])->format('Y-m-d g:i A') : null;
     }
 
     public function user()
