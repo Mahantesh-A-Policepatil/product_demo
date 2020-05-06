@@ -49,7 +49,7 @@
 
           <div class="form-group">
               <label for="descryption">Descryption:</label>
-              <textarea class="form-control" name="descryption" id="descryption"> "{{ $product->descryption }}" </textarea>
+              <textarea class="form-control" name="descryption" id="descryption"> {{ $product->descryption }} </textarea>
           </div>
 
 

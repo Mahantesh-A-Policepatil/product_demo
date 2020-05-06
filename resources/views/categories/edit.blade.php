@@ -22,7 +22,7 @@
 
           <div class="form-group">    
               <label for="name">Category Name:</label>
-              <input type="text" class="form-control" name="name" value={{ $categories->name }} />
+              <input type="text" class="form-control" name="name" value="{{ $categories->name }}" />
           </div>
 
         
