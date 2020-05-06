@@ -21,13 +21,13 @@
            
 
           <div class="form-group">    
-              <label for="first_name">Category Name:</label>
+              <label for="name">Category Name:</label>
               <input type="text" class="form-control" name="name" value={{ $categories->name }} />
           </div>
 
         
           <div class="form-group">
-              <label for="city">Descryption:</label>
+              <label for="descryption">Descryption:</label>
               <textarea class="form-control" name="descryption" id="descryption"> {{ $categories->descryption }} </textarea>
           </div>
 

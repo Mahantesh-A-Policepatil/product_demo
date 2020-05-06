@@ -20,7 +20,7 @@
             @csrf
            
           <div class="form-group">
-            <label for="last_name">Category:</label>
+            <label for="category_id">Category:</label>
             <select class="form-control select2" name='category_id' id='category_id'>
                @foreach($categories as $row)
                   @if($cart->category_id ==  $row->id)
@@ -33,7 +33,7 @@
           </div>
 
           <div class="form-group">
-            <label for="last_name">Product:</label>
+            <label for="product_id">Product:</label>
             <select class="form-control select2" name='product_id' id='product_id'>
                @foreach($products as $row)
                   @if($cart->product_id ==  $row->id)
@@ -47,12 +47,12 @@
 
         
           <div class="form-group">    
-              <label for="first_name">Product Price:</label>
+              <label for="price">Product Price:</label>
               <input type="text" class="form-control" name="price" id='price' value={{$cart->product->price}} readonly />
           </div>
 
           <div class="form-group">
-              <label for="first_name">Product Image:</label>
+              <label for="product_image">Product Image:</label>
               <div class="col-sm-6 product_image_div">
                   <img src="{{asset('image/').'/'.$cart->product->image_path}}" alt="profile Pic" height="200" width="200" id="product_image">
               </div>

@@ -17,12 +17,12 @@
       <form method="post" action="{{ route('categories.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="form-group">    
-              <label for="first_name">Category Name:</label>
+              <label for="name">Category Name:</label>
               <input type="text" class="form-control" name="name"/>
           </div>
          
           <div class="form-group">
-              <label for="city">Descryption:</label>
+              <label for="descryption">Descryption:</label>
               <textarea class="form-control" name="descryption" id="descryption"></textarea>
           </div>
                               
