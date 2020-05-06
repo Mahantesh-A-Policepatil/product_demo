@@ -114,6 +114,7 @@
                  <div class="form-group">
                     <label for="category_id">Categories:</label>
                     <select class="form-control select2" name='category_id' id='category_id'>
+                        <option value="">Select Category</option>
                        @foreach($categories as $row)
                           <option value="{{$row->id}}" >{{$row->name}}</option>
                         @endforeach 
@@ -142,15 +143,23 @@
     $(document).on('change', '#category_id', function (e) {
 
         var category_id = $('#category_id').find(":selected").val();
-        $.ajax({
-               url:"{{ url('getProductsView')}}",
-               type:"get",
-               data:{'category_id':category_id},
-               success: function(response)
-               {
-                  $('#product-list').html(response.data); 
-               }
-        }); 
+        if(category_id == '')
+        {
+            $('#product-list').html(""); 
+        }
+        else
+        {
+            $.ajax({
+                   url:"{{ url('getProductsView')}}",
+                   type:"get",
+                   data:{'category_id':category_id},
+                   success: function(response)
+                   {
+                      $('#product-list').html(response.data); 
+                   }
+            }); 
+        }
+        
     }); 
 
 </script>

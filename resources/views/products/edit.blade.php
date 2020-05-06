@@ -20,12 +20,12 @@
            
 
             <div class="form-group">    
-              <label for="first_name">Product Name:</label>
-              <input type="text" class="form-control" name="name" value={{ $product->name }} />
+              <label for="name">Product Name:</label>
+              <input type="text" class="form-control" name="name" value="{{ $product->name }}" />
           </div>
 
           <div class="form-group">
-            <label for="last_name">Category:</label>
+            <label for="category_id">Category:</label>
             <select class="form-control select2" name='category_id' id='category_id'>
                @foreach($categories as $row)
                    @if($product->category_id == $row->id)
@@ -38,18 +38,18 @@
           </div>
 
           <div class="form-group">    
-              <label for="first_name">Product Price:</label>
+              <label for="price">Product Price:</label>
               <input type="text" class="form-control" name="price" value={{ $product->price }} />
           </div>
 
           <div class="form-group">
-              <label for="country">Image:</label>
+              <label for="image">Image:</label>
               <input type="file" class="form-control" name="image" value={{ $product->image_path }} />
           </div>
 
           <div class="form-group">
-              <label for="city">Descryption:</label>
-              <textarea class="form-control" name="descryption" id="descryption"> {{ $product->descryption }} </textarea>
+              <label for="descryption">Descryption:</label>
+              <textarea class="form-control" name="descryption" id="descryption"> "{{ $product->descryption }}" </textarea>
           </div>
 
 

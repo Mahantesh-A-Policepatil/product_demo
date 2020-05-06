@@ -17,7 +17,7 @@
       <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="form-group">    
-              <label for="first_name">Product Name:</label>
+              <label for="name">Product Name:</label>
               <input type="text" class="form-control" name="name"/>
           </div>
 
@@ -31,17 +31,17 @@
           </div>
 
           <div class="form-group">    
-              <label for="first_name">Product Price:</label>
+              <label for="price">Product Price:</label>
               <input type="text" class="form-control" name="price"/>
           </div>
 
           <div class="form-group">
-              <label for="country">Image:</label>
+              <label for="image">Image:</label>
               <input type="file" class="form-control" name="image"/>
           </div>
 
           <div class="form-group">
-              <label for="city">Descryption:</label>
+              <label for="descryption">Descryption:</label>
               <textarea class="form-control" name="descryption" id="descryption"></textarea>
           </div>
                               
