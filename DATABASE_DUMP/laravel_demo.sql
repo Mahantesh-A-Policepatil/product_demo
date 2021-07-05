@@ -95,27 +95,6 @@ CREATE TABLE `failed_jobs` (
 -- Table structure for table `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(31, '2014_10_12_000000_create_users_table', 1),
-(32, '2014_10_12_100000_create_password_resets_table', 1),
-(33, '2019_08_19_000000_create_failed_jobs_table', 1),
-(34, '2020_04_15_041047_create_categories_table', 1),
-(35, '2020_04_15_041200_create_products_table', 1),
-(36, '2020_04_15_042332_create_orders_table', 1),
-(37, '2020_04_15_042832_create_cart_table', 1),
-(39, '2020_04_16_092434_add_soft_deletes_to_cart', 2),
-(42, '2020_04_17_031429_create_roles_table', 3),
-(43, '2020_04_17_031730_create_role_user_table', 3);
 
 -- --------------------------------------------------------
 
