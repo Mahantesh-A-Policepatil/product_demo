@@ -20,6 +20,16 @@ MAIL_PORT=587
 MAIL_USERNAME=XXXXXXXXXX@gmail.com
 MAIL_PASSWORD=XXXXXXXXXX
 MAIL_ENCRYPTION=tls
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=demo.pre.telecom@gmail.com
+MAIL_PASSWORD=uxhadivsoyjxkwew
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=demo.pre.telecom@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+
 ------------------------------------------------------------------------
 Databse Migrations
 ------------------------------------------------------------------------
