@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Orders;
-use App\User;
-use App\Models\Categories;
-use App\Models\Products;
-use Carbon\Carbon;
+use DB;
 use Auth;
+use App\User;
+use Datatables;
+use Carbon\Carbon;
+use App\Models\Orders;
+use App\Models\Products;
+use App\Models\Categories;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use App\Notifications\OrderNotifications\OrderPlaced;
 use App\Notifications\OrderNotifications\OrderUpdated;
 use App\Notifications\OrderNotifications\OrderCancelled;
-use Datatables;
-use DB;
 
 class OrderController extends Controller
 {
