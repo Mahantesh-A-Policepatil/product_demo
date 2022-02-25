@@ -104,16 +104,6 @@ CREATE TABLE `migrations` (
 -- Dumping data for table `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2020_04_15_041047_create_categories_table', 1),
-(5, '2020_04_15_041200_create_products_table', 1),
-(6, '2020_04_15_042332_create_orders_table', 1),
-(7, '2020_04_15_042832_create_cart_table', 1),
-(8, '2020_04_16_092434_add_soft_deletes_to_cart', 1);
-
 -- --------------------------------------------------------
 
 --
