@@ -33,8 +33,9 @@ Route::group(['middleware' => ['auth']], function() {
 	//show_data
 	Route::get('show_data', 'OrderController@show_data')->name('show_data');
 	Route::post('deleteOrder', 'OrderController@delete')->name('deleteOrder');
+	
 });
-
+Route::get('getCategories', 'CategoryController@types')->name('getCategories');
 Route::get('getProductPrice', 'ProductController@getProductPrice');
 Route::get('getProductsByCategory', 'ProductController@getProductsByCategory');
 Route::get('getProductsView', 'ProductController@getProductsView');

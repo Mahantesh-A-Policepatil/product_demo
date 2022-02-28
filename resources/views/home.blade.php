@@ -15,8 +15,9 @@
                         </div>
                     @endif
                     <ul>  
+                        
                         <li>
-                            <a href="{{ route('users.index') }}" >Users</a> 
+                            <a href="{{ route('getCategories') }}" >Tab Panel</a> 
                         </li>
                         <li>
                             <a href="{{ route('categories.index') }}" >Categories</a> 
@@ -31,7 +32,7 @@
                             <a href="{{ route('orders.index') }}" >Orders</a> 
                         </li>
                         
-                         <li>
+                        <li>
                             <a href="{{ route('show_data') }}" >Orders with Datatable</a> 
                         </li>
                     </ul>    

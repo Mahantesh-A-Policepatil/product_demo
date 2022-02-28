@@ -115,4 +115,16 @@ class CategoryController extends Controller
 
         return redirect('/categories')->with('success', 'Category Deleted Successfully!');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function types()
+    {
+        //
+        $categories = Categories::all();
+        return view('tab.home', compact('categories'));
+    }
 }
