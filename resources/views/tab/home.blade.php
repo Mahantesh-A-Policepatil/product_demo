@@ -37,6 +37,13 @@
 		</div>
 	</div>
     <div class="active col-md-8" id="registrationForm" style="display:none; margin-top:40px;">
+
+
+   <div class="card" style="border-color: #286090;">
+    <div class="card-header" style="background-color:#286090; border-color: #2e6da4; color:white">
+        <span id="header"></span>
+    </div>
+    <div class="card-body" style="font-size: 20px;">
         <form method="POST" action="{{ route('register') }}">
             @csrf       
 
@@ -99,6 +106,9 @@
                 </div>
             </div>
          </form>
+     </div>
+     </div>
+     </div>
     </div>
 </div>
 
@@ -114,23 +124,26 @@
         //admin
         if(usertype == 'admin')
         {
+            $("#header").text("Admin Registration");
             $('tabs-1').html(registrationForm);
             registrationForm.show();
-            $('#type').val(usertype);
+            $('#type').val(usertype);            
         }
         //subAdmin
         if(usertype == 'subAdmin')
         {
+            $("#header").text("Sub Admin Registration");
             $('tabs-2').html(registrationForm);
             registrationForm.show();
-            $('#type').val(usertype);
+            $('#type').val(usertype);            
         }
         //user
         if(usertype == 'user')
         {
+            $("#header").text("User Registration");
             $('tabs-3').html(registrationForm);
             registrationForm.show();
-            $('#type').val(usertype);
+            $('#type').val(usertype);            
         }
 	}); 
 </script>
