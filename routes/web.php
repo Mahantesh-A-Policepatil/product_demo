@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
@@ -23,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/productList', 'GuestUserController@productListView')->name('productList');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
 	Route::Resource('categories', 'CategoryController')->middleware('admin');
 	Route::Resource('products', 'ProductController')->middleware('admin');
 	Route::Resource('users', 'UserController')->middleware('admin');
@@ -33,13 +34,9 @@ Route::group(['middleware' => ['auth']], function() {
 	//show_data
 	Route::get('show_data', 'OrderController@show_data')->name('show_data');
 	Route::post('deleteOrder', 'OrderController@delete')->name('deleteOrder');
-	
 });
-Route::get('getCategories', 'CategoryController@types')->name('getCategories');
+Route::get('registration', 'CategoryController@types')->name('registration');
+
 Route::get('getProductPrice', 'ProductController@getProductPrice');
 Route::get('getProductsByCategory', 'ProductController@getProductsByCategory');
 Route::get('getProductsView', 'ProductController@getProductsView');
-
-
-
-

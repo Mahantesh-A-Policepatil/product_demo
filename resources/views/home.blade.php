@@ -17,7 +17,7 @@
                     <ul>  
                         
                         <li>
-                            <a href="{{ route('getCategories') }}" >Tab Panel</a> 
+                            <a href="{{ route('registration') }}" >Tab Panel</a> 
                         </li>
                         <li>
                             <a href="{{ route('categories.index') }}" >Categories</a> 

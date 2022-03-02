@@ -123,8 +123,6 @@ class CategoryController extends Controller
      */
     public function types()
     {
-        //
-        $categories = Categories::all();
-        return view('tab.home', compact('categories'));
+        return view('tab.home');
     }
 }
