@@ -154,5 +154,13 @@ Execute the following command to create 150 records in orders table.
 ------------------------------------------------------------------------
 factory(App\Models\Orders::class, 150)->create();
 ------------------------------------------------------------------------
+Creating new middleware
+------------------------------------------------------------------------
+php artisan make:middleware admin
+------------------------------------------------------------------------
+To Start Laravel Server
+------------------------------------------------------------------------
+php artisan cache:clear && php artisan view:cache && php artisan config:cache && php artisan route:cache && php artisan serve --port=8000
+------------------------------------------------------------------------
 
 

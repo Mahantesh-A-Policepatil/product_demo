@@ -81,19 +81,26 @@
         
      
      $(document).on('click', '.delete-order', function (e) {
-        var order_id = $(this).data('order-id');
-        $.ajax({
-               url:"{{ route('deleteOrder')}}",
-               type:"post",
-               data:{'order_id':order_id, "_token": "{{ csrf_token() }}"},
-               success: function(response)
-               {
-                    if ( $.fn.dataTable.isDataTable( '#yajra_table' ) ) {
-                        table = $('#yajra_table').DataTable();
-                        table.ajax.reload( null, false ); // user paging is not reset on reload
-                    }
-               }
+        
+        if(confirm("Are you sure you want to DELETE this order?")){
+            var order_id = $(this).data('order-id');
+            $.ajax({
+                   url:"{{ route('deleteOrder')}}",
+                   type:"post",
+                   data:{'order_id':order_id, "_token": "{{ csrf_token() }}"},
+                   success: function(response)
+                   {
+                        if ( $.fn.dataTable.isDataTable( '#yajra_table' ) ) {
+                            table = $('#yajra_table').DataTable();
+                            table.ajax.reload( null, false ); // user paging is not reset on reload
+                            alert(response);
+                        }
+                   }
            });
+        }
+        else{
+             return false;
+        }       
         
      }); 
      
