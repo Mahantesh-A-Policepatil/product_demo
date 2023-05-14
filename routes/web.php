@@ -40,3 +40,10 @@ Route::get('registration', 'CategoryController@types')->name('registration');
 Route::get('getProductPrice', 'ProductController@getProductPrice');
 Route::get('getProductsByCategory', 'ProductController@getProductsByCategory');
 Route::get('getProductsView', 'ProductController@getProductsView');
+
+Route::get('/gantt', function () {	
+    return view('gantt');
+});
+
+Route::get('/data', 'GanttController@get');
+Route::resource('task', 'TaskController');

@@ -32,3 +32,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 });
 
 Route::get('getProductsByCategory/{category_id}', 'API\ProductController@getProductsByCategory');
+
+Route::get('/ganttdata', 'GanttController@get');
+Route::resource('task', 'TaskController');
+Route::resource('link', 'LinkController');

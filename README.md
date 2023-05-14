@@ -99,6 +99,7 @@ php artisan make:model Models\Cart
 ------------------------------------------------------------------------
 Commands Used to Create Controllers (WEB)
 ------------------------------------------------------------------------
+php artisan make:controller GanttController --resource
 php artisan make:controller UserController --resource
 php artisan make:controller CategoryController --resource
 php artisan make:controller ProductController --resource
